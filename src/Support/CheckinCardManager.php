@@ -27,6 +27,7 @@ class CheckinCardManager
 
     /**
      * Get the total available check-in cards for the user from the store backpack.
+     * Permanent cards never expire; time-limited cards must have outtime in the future.
      */
     public function getAvailableCards(User $user): int
     {
@@ -39,13 +40,17 @@ class CheckinCardManager
             ->where('code', 'checkin-card')
             ->where('status', 1)
             ->where(function ($query) {
-                $query->whereNull('outtime')->orWhere('outtime', '>', Carbon::now());
+                $query->where('type', 'permanent')
+                    ->orWhere(function ($q) {
+                        $q->whereNull('outtime')->orWhere('outtime', '>', Carbon::now());
+                    });
             })
             ->count();
     }
 
     /**
      * Consume one check-in card from the store backpack.
+     * Consumes the soonest-expiring time-limited card first, falling back to permanent cards.
      * Returns true if a card was consumed, false if insufficient cards.
      */
     public function consumeCard(User $user): bool
@@ -59,8 +64,13 @@ class CheckinCardManager
             ->where('code', 'checkin-card')
             ->where('status', 1)
             ->where(function ($query) {
-                $query->whereNull('outtime')->orWhere('outtime', '>', Carbon::now());
+                $query->where('type', 'permanent')
+                    ->orWhere(function ($q) {
+                        $q->whereNull('outtime')->orWhere('outtime', '>', Carbon::now());
+                    });
             })
+            ->orderByRaw("CASE WHEN type = 'permanent' OR outtime IS NULL THEN 1 ELSE 0 END ASC")
+            ->orderBy('outtime', 'asc')
             ->orderBy('id', 'asc')
             ->lockForUpdate()
             ->first();
