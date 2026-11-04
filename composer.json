@@ -1,8 +1,18 @@
 {
     "name": "primexcalibur/checkin-with-history",
     "description": "Daily check-in, history calendar and supplementary check-in cards for Flarum.",
+    "keywords": [
+        "flarum",
+        "checkin",
+        "check-in",
+        "attendance",
+        "calendar",
+        "history",
+        "daily",
+        "reward"
+    ],
     "type": "flarum-extension",
-    "license": "(MIT AND LPL-1.02)",
+    "license": "MIT",
     "require": {
         "php": "^8.0",
         "flarum/core": "^1.8.0",
@@ -37,6 +47,7 @@
     "extra": {
         "flarum-extension": {
             "title": "Check-in with History",
+            "category": "",
             "icon": {
                 "name": "fas fa-calendar-check",
                 "backgroundColor": "#238c59",
@@ -45,10 +56,18 @@
         },
         "flarum-cli": {
             "modules": {
-                "githubActions": true,
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": true,
+                "css": true,
+                "locale": true,
                 "gitConf": true,
-                "backendTesting": true,
+                "githubActions": true,
                 "prettier": true,
+                "typescript": true,
+                "bundlewatch": false,
+                "backendTesting": true,
                 "editorConfig": true,
                 "styleci": true
             }
