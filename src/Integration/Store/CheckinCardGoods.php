@@ -11,4 +11,6 @@ class CheckinCardGoods extends Goods
     public $usable = true;
 
     public $className = 'store-buy Modal--small';
+
+    public $popUp = [];
 }
