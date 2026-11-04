@@ -77,9 +77,5 @@
     "require-dev": {
         "flarum/testing": "^1.0.0",
         "flarum/suspend": "^1.8"
-    },
-    "replace": {
-        "ziiven/flarum-daily-check-in": "*",
-        "mattoid/flarum-daily-check-in-history": "*"
     }
 }
