@@ -8,7 +8,6 @@ use DateTimeZone;
 use Flarum\Foundation\ValidationException;
 use Flarum\Locale\Translator;
 use Flarum\Settings\SettingsRepositoryInterface;
-use Flarum\User\Exception\PermissionDeniedException;
 use Flarum\User\User;
 use Huoxin\MoneyWithHistory\Service\BalanceManager;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -186,7 +185,9 @@ class CheckInService
         $description = $supplementary ? 'supplementary-checkin-reward' : 'checkin-reward';
 
         $this->balances->applyBalanceChange(
-            $user, $amount, $source,
+            $user,
+            $amount,
+            $source,
             'primexcalibur-checkin-with-history.forum.money-history.'.$description,
             ['continuousDays' => (int) $user->total_continuous_checkin_count],
             $user
