@@ -1,14 +1,14 @@
 <?php
 
-namespace Primexcalibur\Checkin\Api\Controller;
+namespace Primexcalibur\CheckinWithHistory\Api\Controller;
 
 use Flarum\Api\Controller\AbstractListController;
 use Flarum\Http\RequestUtil;
 use Flarum\User\Exception\PermissionDeniedException;
 use Flarum\User\User;
 use Illuminate\Support\Arr;
-use Primexcalibur\Checkin\Api\Serializer\CheckinHistorySerializer;
-use Primexcalibur\Checkin\Model\CheckinRecord;
+use Primexcalibur\CheckinWithHistory\Api\Serializer\CheckinHistorySerializer;
+use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 

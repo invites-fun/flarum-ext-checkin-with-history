@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Integration\Store;
+namespace Primexcalibur\CheckinWithHistory\Integration\Store;
 
 use Flarum\Foundation\ValidationException;
 use Flarum\Locale\Translator;

@@ -1,12 +1,12 @@
 <?php
 
-namespace Primexcalibur\Checkin\Api\Serializer;
+namespace Primexcalibur\CheckinWithHistory\Api\Serializer;
 
 use DateTimeInterface;
 use Flarum\Api\Serializer\AbstractSerializer;
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
-use Primexcalibur\Checkin\Model\CheckinRecord;
+use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
 use Tobscure\JsonApi\Relationship;
 
 class CheckinHistorySerializer extends AbstractSerializer

@@ -1,13 +1,13 @@
 <?php
 
-namespace Primexcalibur\Checkin\Api\Controller;
+namespace Primexcalibur\CheckinWithHistory\Api\Controller;
 
 use Flarum\Api\Controller\AbstractShowController;
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Http\RequestUtil;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
-use Primexcalibur\Checkin\Service\CheckInService;
+use Primexcalibur\CheckinWithHistory\Service\CheckInService;
 
 class CheckInController extends AbstractShowController
 {

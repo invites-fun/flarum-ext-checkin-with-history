@@ -1,12 +1,12 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\unit;
+namespace Primexcalibur\CheckinWithHistory\Tests\unit;
 
 use Carbon\Carbon;
 use Flarum\Testing\unit\TestCase;
 use Flarum\User\User;
 use Mockery as m;
-use Primexcalibur\Checkin\Access\UserPolicy;
+use Primexcalibur\CheckinWithHistory\Access\UserPolicy;
 
 class UserPolicyTest extends TestCase
 {

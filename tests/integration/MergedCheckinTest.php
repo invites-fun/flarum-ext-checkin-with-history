@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\integration;
+namespace Primexcalibur\CheckinWithHistory\Tests\integration;
 
 use Carbon\CarbonImmutable;
 use Flarum\Settings\SettingsRepositoryInterface;
@@ -8,10 +8,10 @@ use Flarum\Testing\integration\RetrievesAuthorizedUsers;
 use Flarum\Testing\integration\TestCase;
 use Flarum\User\User;
 use Illuminate\Contracts\Events\Dispatcher;
-use Primexcalibur\Checkin\Event\CheckedIn;
-use Primexcalibur\Checkin\Model\CheckinRecord;
-use Primexcalibur\Checkin\Support\CheckinCardManager;
-use Primexcalibur\Checkin\Tests\fixtures\FakeCheckinCardManager;
+use Primexcalibur\CheckinWithHistory\Event\CheckedIn;
+use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
+use Primexcalibur\CheckinWithHistory\Support\CheckinCardManager;
+use Primexcalibur\CheckinWithHistory\Tests\fixtures\FakeCheckinCardManager;
 
 class MergedCheckinTest extends TestCase
 {

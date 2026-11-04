@@ -1,14 +1,14 @@
 <?php
 
-namespace Primexcalibur\Checkin\Api\Controller;
+namespace Primexcalibur\CheckinWithHistory\Api\Controller;
 
 use Flarum\Api\Controller\AbstractCreateController;
 use Flarum\Foundation\ValidationException;
 use Flarum\Http\RequestUtil;
 use Flarum\Locale\Translator;
 use Illuminate\Support\Arr;
-use Primexcalibur\Checkin\Api\Serializer\CheckinHistorySerializer;
-use Primexcalibur\Checkin\Service\CheckInService;
+use Primexcalibur\CheckinWithHistory\Api\Serializer\CheckinHistorySerializer;
+use Primexcalibur\CheckinWithHistory\Service\CheckInService;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 

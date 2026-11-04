@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\unit;
+namespace Primexcalibur\CheckinWithHistory\Tests\unit;
 
 use Flarum\Extension\ExtensionManager;
 use Flarum\Testing\unit\TestCase;
@@ -9,7 +9,7 @@ use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use Mockery as m;
-use Primexcalibur\Checkin\Support\CheckinCardManager;
+use Primexcalibur\CheckinWithHistory\Support\CheckinCardManager;
 
 class CheckinCardManagerTest extends TestCase
 {

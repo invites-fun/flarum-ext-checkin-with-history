@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\integration;
+namespace Primexcalibur\CheckinWithHistory\Tests\integration;
 
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;

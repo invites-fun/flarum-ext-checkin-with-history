@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Model;
+namespace Primexcalibur\CheckinWithHistory\Model;
 
 use Carbon\Carbon;
 use Flarum\Database\AbstractModel;

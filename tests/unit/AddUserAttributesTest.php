@@ -1,14 +1,14 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\unit;
+namespace Primexcalibur\CheckinWithHistory\Tests\unit;
 
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Testing\unit\TestCase;
 use Flarum\User\User;
 use Mockery as m;
-use Primexcalibur\Checkin\Api\Serializer\AddUserAttributes;
-use Primexcalibur\Checkin\Support\CheckinCardManager;
-use Primexcalibur\Checkin\Support\CheckInStateResolver;
+use Primexcalibur\CheckinWithHistory\Api\Serializer\AddUserAttributes;
+use Primexcalibur\CheckinWithHistory\Support\CheckinCardManager;
+use Primexcalibur\CheckinWithHistory\Support\CheckInStateResolver;
 
 class AddUserAttributesTest extends TestCase
 {

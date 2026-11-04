@@ -1,11 +1,11 @@
 <?php
 
-namespace Primexcalibur\Checkin\Api\Serializer;
+namespace Primexcalibur\CheckinWithHistory\Api\Serializer;
 
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\User\User;
-use Primexcalibur\Checkin\Support\CheckinCardManager;
-use Primexcalibur\Checkin\Support\CheckInStateResolver;
+use Primexcalibur\CheckinWithHistory\Support\CheckinCardManager;
+use Primexcalibur\CheckinWithHistory\Support\CheckInStateResolver;
 
 class AddUserAttributes
 {

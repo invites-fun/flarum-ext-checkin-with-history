@@ -1,12 +1,12 @@
 <?php
 
-namespace Primexcalibur\Checkin\Support;
+namespace Primexcalibur\CheckinWithHistory\Support;
 
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\User;
-use Primexcalibur\Checkin\Model\CheckinRecord;
+use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
 
 class CheckInStateResolver
 {

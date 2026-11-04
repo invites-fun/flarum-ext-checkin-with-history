@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Integration\Store;
+namespace Primexcalibur\CheckinWithHistory\Integration\Store;
 
 use Mattoid\Store\Goods\Goods;
 

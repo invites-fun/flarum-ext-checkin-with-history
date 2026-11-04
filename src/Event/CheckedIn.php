@@ -1,9 +1,9 @@
 <?php
 
-namespace Primexcalibur\Checkin\Event;
+namespace Primexcalibur\CheckinWithHistory\Event;
 
 use Flarum\User\User;
-use Primexcalibur\Checkin\Model\CheckinRecord;
+use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
 
 class CheckedIn
 {

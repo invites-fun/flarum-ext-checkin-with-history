@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\integration;
+namespace Primexcalibur\CheckinWithHistory\Tests\integration;
 
 use Flarum\Testing\integration\TestCase;
 use Illuminate\Database\Connectors\MySqlConnector;

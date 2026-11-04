@@ -50,16 +50,16 @@ Normal and supplementary check-in lock the same user row. Card consumption, bala
 
 Existing API routes remain available:
 
-| Method | Route | Purpose |
-|---|---|---|
-| POST | `/api/checkin` | Normal check-in |
-| GET | `/api/checkin/history` | History by user and date range |
-| POST | `/api/supplement/checkin` | Supplement a date |
-| POST | `/api/give/checkin/card` | Issue cards |
+| Method | Route                     | Purpose                        |
+| ------ | ------------------------- | ------------------------------ |
+| POST   | `/api/checkin`            | Normal check-in                |
+| GET    | `/api/checkin/history`    | History by user and date range |
+| POST   | `/api/supplement/checkin` | Supplement a date              |
+| POST   | `/api/give/checkin/card`  | Issue cards                    |
 
 ## Architecture
 
-All PHP code lives under `Primexcalibur\Checkin`. Daily, automatic and supplementary check-in enter `Service\CheckInService`, which owns the user lock and transaction, creates a `Model\CheckinRecord`, applies balance/card changes and updates totals and streaks. The history API reads those records. `Service\CheckinCardService` handles card issuance separately.
+All PHP code lives under `Primexcalibur\CheckinWithHistory`. Daily, automatic and supplementary check-in enter `Service\CheckInService`, which owns the user lock and transaction, creates a `Model\CheckinRecord`, applies balance/card changes and updates totals and streaks. The history API reads those records. `Service\CheckinCardService` handles card issuance separately.
 
 Both successful operations dispatch `Event\CheckedIn` after their transaction succeeds. The event contains `user`, `record` and `supplementCount` (zero for normal check-in). Third-party PHP integrations should use this event; the old extensions' PHP classes and events are not exported. The HTTP routes and stored data remain compatible.
 

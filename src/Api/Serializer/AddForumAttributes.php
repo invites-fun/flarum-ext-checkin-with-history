@@ -1,10 +1,10 @@
 <?php
 
-namespace Primexcalibur\Checkin\Api\Serializer;
+namespace Primexcalibur\CheckinWithHistory\Api\Serializer;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
-use Primexcalibur\Checkin\Support\CheckInStateResolver;
+use Primexcalibur\CheckinWithHistory\Support\CheckInStateResolver;
 
 class AddForumAttributes
 {

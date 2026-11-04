@@ -1,12 +1,12 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\unit;
+namespace Primexcalibur\CheckinWithHistory\Tests\unit;
 
 use Carbon\Carbon;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\Testing\unit\TestCase;
-use Primexcalibur\Checkin\Api\Serializer\CheckinHistorySerializer;
-use Primexcalibur\Checkin\Model\CheckinRecord;
+use Primexcalibur\CheckinWithHistory\Api\Serializer\CheckinHistorySerializer;
+use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
 use Mockery as m;
 
 class CheckinHistorySerializerTest extends TestCase

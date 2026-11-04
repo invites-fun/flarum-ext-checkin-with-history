@@ -1,9 +1,9 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\fixtures;
+namespace Primexcalibur\CheckinWithHistory\Tests\fixtures;
 
 use Flarum\User\User;
-use Primexcalibur\Checkin\Support\CheckinCardManager;
+use Primexcalibur\CheckinWithHistory\Support\CheckinCardManager;
 
 class FakeCheckinCardManager extends CheckinCardManager
 {

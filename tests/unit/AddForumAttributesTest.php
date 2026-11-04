@@ -1,14 +1,14 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\unit;
+namespace Primexcalibur\CheckinWithHistory\Tests\unit;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\Testing\unit\TestCase;
 use Flarum\User\User;
 use Mockery as m;
-use Primexcalibur\Checkin\Api\Serializer\AddForumAttributes;
-use Primexcalibur\Checkin\Support\CheckInStateResolver;
+use Primexcalibur\CheckinWithHistory\Api\Serializer\AddForumAttributes;
+use Primexcalibur\CheckinWithHistory\Support\CheckInStateResolver;
 
 class AddForumAttributesTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Service;
+namespace Primexcalibur\CheckinWithHistory\Service;
 
 use Carbon\CarbonImmutable;
 use DateTimeImmutable;
@@ -13,10 +13,10 @@ use Flarum\User\User;
 use Huoxin\MoneyWithHistory\Service\BalanceManager;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\ConnectionInterface;
-use Primexcalibur\Checkin\Event\CheckedIn;
-use Primexcalibur\Checkin\Model\CheckinRecord;
-use Primexcalibur\Checkin\Support\CheckinCardManager;
-use Primexcalibur\Checkin\Support\CheckInStateResolver;
+use Primexcalibur\CheckinWithHistory\Event\CheckedIn;
+use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
+use Primexcalibur\CheckinWithHistory\Support\CheckinCardManager;
+use Primexcalibur\CheckinWithHistory\Support\CheckInStateResolver;
 
 class CheckInService
 {

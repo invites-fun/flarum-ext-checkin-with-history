@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Support;
+namespace Primexcalibur\CheckinWithHistory\Support;
 
 use Carbon\Carbon;
 use Flarum\Extension\ExtensionManager;

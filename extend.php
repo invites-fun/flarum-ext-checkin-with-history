@@ -5,15 +5,15 @@ use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Extend;
 use Flarum\User\User;
 use Mattoid\Store\Extend\StoreExtend;
-use Primexcalibur\Checkin\Access\UserPolicy;
-use Primexcalibur\Checkin\Api\Controller\CheckInController;
-use Primexcalibur\Checkin\Api\Controller\ListCheckinHistoryController;
-use Primexcalibur\Checkin\Api\Controller\PostCheckinHistoryController;
-use Primexcalibur\Checkin\Api\Serializer\AddForumAttributes;
-use Primexcalibur\Checkin\Api\Serializer\AddUserAttributes;
-use Primexcalibur\Checkin\Integration\Store\CheckinCardGoods;
-use Primexcalibur\Checkin\Integration\Store\CheckinCardUse;
-use Primexcalibur\Checkin\Model\CheckinRecord;
+use Primexcalibur\CheckinWithHistory\Access\UserPolicy;
+use Primexcalibur\CheckinWithHistory\Api\Controller\CheckInController;
+use Primexcalibur\CheckinWithHistory\Api\Controller\ListCheckinHistoryController;
+use Primexcalibur\CheckinWithHistory\Api\Controller\PostCheckinHistoryController;
+use Primexcalibur\CheckinWithHistory\Api\Serializer\AddForumAttributes;
+use Primexcalibur\CheckinWithHistory\Api\Serializer\AddUserAttributes;
+use Primexcalibur\CheckinWithHistory\Integration\Store\CheckinCardGoods;
+use Primexcalibur\CheckinWithHistory\Integration\Store\CheckinCardUse;
+use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
 
 return [
     (new Extend\Frontend('admin'))

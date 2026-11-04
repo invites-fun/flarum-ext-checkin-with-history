@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\integration;
+namespace Primexcalibur\CheckinWithHistory\Tests\integration;
 
 use Carbon\Carbon;
 use Flarum\Settings\SettingsRepositoryInterface;
@@ -8,10 +8,10 @@ use Flarum\Testing\integration\RetrievesAuthorizedUsers;
 use Flarum\Testing\integration\TestCase;
 use Flarum\User\User;
 use Illuminate\Contracts\Events\Dispatcher;
-use Primexcalibur\Checkin\Event\CheckedIn;
-use Primexcalibur\Checkin\Model\CheckinRecord;
-use Primexcalibur\Checkin\Support\CheckinCardManager;
-use Primexcalibur\Checkin\Tests\fixtures\FakeCheckinCardManager;
+use Primexcalibur\CheckinWithHistory\Event\CheckedIn;
+use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
+use Primexcalibur\CheckinWithHistory\Support\CheckinCardManager;
+use Primexcalibur\CheckinWithHistory\Tests\fixtures\FakeCheckinCardManager;
 
 class PostSupplementCheckinTest extends TestCase
 {
@@ -67,8 +67,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $body = (string) $response->getBody();
@@ -117,8 +117,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(403, $response->getStatusCode());
@@ -133,8 +133,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => 'invalid-date',
-            ])
+                        'date' => 'invalid-date',
+                    ])
         );
 
         $this->assertEquals(422, $response->getStatusCode());
@@ -151,8 +151,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $futureDate,
-            ])
+                        'date' => $futureDate,
+                    ])
         );
 
         $this->assertEquals(422, $response->getStatusCode());
@@ -177,8 +177,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(422, $response->getStatusCode());
@@ -197,8 +197,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $blockedDate,
-            ])
+                        'date' => $blockedDate,
+                    ])
         );
 
         $this->assertEquals(422, $response->getStatusCode());
@@ -217,8 +217,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $blockedDate,
-            ])
+                        'date' => $blockedDate,
+                    ])
         );
 
         $this->assertEquals(422, $response->getStatusCode());
@@ -237,8 +237,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(422, $response->getStatusCode());
@@ -266,8 +266,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $yesterday,
-            ])
+                        'date' => $yesterday,
+                    ])
         );
 
         $this->assertEquals(201, $response->getStatusCode(), (string) $response->getBody());
@@ -304,8 +304,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $day3,
-            ])
+                        'date' => $day3,
+                    ])
         );
 
         $this->assertEquals(422, $response->getStatusCode());
@@ -324,8 +324,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(201, $response->getStatusCode(), (string) $response->getBody());
@@ -346,8 +346,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(422, $response->getStatusCode());
@@ -369,8 +369,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(201, $response->getStatusCode(), (string) $response->getBody());
@@ -407,8 +407,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $day2,
-            ])
+                        'date' => $day2,
+                    ])
         );
 
         $this->assertEquals(201, $response->getStatusCode(), (string) $response->getBody());
@@ -439,8 +439,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(201, $response->getStatusCode(), (string) $response->getBody());
@@ -462,8 +462,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(403, $response->getStatusCode());
@@ -482,8 +482,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(201, $response->getStatusCode(), (string) $response->getBody());
@@ -503,8 +503,8 @@ class PostSupplementCheckinTest extends TestCase
             $this->request('POST', '/api/supplement/checkin', [
                 'authenticatedAs' => 2,
             ])->withParsedBody([
-                'date' => $pastDate,
-            ])
+                        'date' => $pastDate,
+                    ])
         );
 
         $this->assertEquals(422, $response->getStatusCode());

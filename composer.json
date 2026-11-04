@@ -26,7 +26,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Primexcalibur\\Checkin\\": "src/"
+            "Primexcalibur\\CheckinWithHistory\\": "src/"
         }
     },
     "authors": [
@@ -75,7 +75,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Primexcalibur\\Checkin\\Tests\\": "tests/"
+            "Primexcalibur\\CheckinWithHistory\\Tests\\": "tests/"
         }
     },
     "scripts": {

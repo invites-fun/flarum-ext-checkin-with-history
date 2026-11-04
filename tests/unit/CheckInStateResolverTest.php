@@ -1,13 +1,13 @@
 <?php
 
-namespace Primexcalibur\Checkin\Tests\unit;
+namespace Primexcalibur\CheckinWithHistory\Tests\unit;
 
 use Carbon\CarbonImmutable;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\Testing\unit\TestCase;
 use Flarum\User\User;
 use Mockery as m;
-use Primexcalibur\Checkin\Support\CheckInStateResolver;
+use Primexcalibur\CheckinWithHistory\Support\CheckInStateResolver;
 
 class CheckInStateResolverTest extends TestCase
 {

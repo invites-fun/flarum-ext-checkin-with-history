@@ -1,6 +1,6 @@
 <?php
 
-namespace Primexcalibur\Checkin\Access;
+namespace Primexcalibur\CheckinWithHistory\Access;
 
 use Carbon\Carbon;
 use Flarum\User\Access\AbstractPolicy;
