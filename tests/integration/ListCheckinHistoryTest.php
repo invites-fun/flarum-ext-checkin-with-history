@@ -65,8 +65,8 @@ class ListCheckinHistoryTest extends TestCase
             $this->request('GET', '/api/checkin/history', [
                 'authenticatedAs' => 2,
             ])->withQueryParams([
-                        'userId' => 2,
-                    ])
+                'userId' => 2,
+            ])
         );
 
         $this->assertEquals(200, $response->getStatusCode());
@@ -84,8 +84,8 @@ class ListCheckinHistoryTest extends TestCase
             $this->request('GET', '/api/checkin/history', [
                 'authenticatedAs' => 2,
             ])->withQueryParams([
-                        'username' => 'normal',
-                    ])
+                'username' => 'normal',
+            ])
         );
 
         $this->assertEquals(200, $response->getStatusCode());
@@ -102,8 +102,8 @@ class ListCheckinHistoryTest extends TestCase
             $this->request('GET', '/api/checkin/history', [
                 'authenticatedAs' => 2,
             ])->withQueryParams([
-                        'username' => 'nonexistent_user_xyz',
-                    ])
+                'username' => 'nonexistent_user_xyz',
+            ])
         );
 
         $this->assertEquals(200, $response->getStatusCode());
@@ -120,8 +120,8 @@ class ListCheckinHistoryTest extends TestCase
             $this->request('GET', '/api/checkin/history', [
                 'authenticatedAs' => 2,
             ])->withQueryParams([
-                        'userId' => 3,
-                    ])
+                'userId' => 3,
+            ])
         );
 
         $this->assertEquals(403, $response->getStatusCode());
@@ -142,8 +142,8 @@ class ListCheckinHistoryTest extends TestCase
             $this->request('GET', '/api/checkin/history', [
                 'authenticatedAs' => 2,
             ])->withQueryParams([
-                        'userId' => 3,
-                    ])
+                'userId' => 3,
+            ])
         );
 
         $this->assertEquals(200, $response->getStatusCode());
@@ -175,10 +175,10 @@ class ListCheckinHistoryTest extends TestCase
             $this->request('GET', '/api/checkin/history', [
                 'authenticatedAs' => 2,
             ])->withQueryParams([
-                        'userId' => 2,
-                        'start' => '2026-08-11',
-                        'end' => '2026-08-11',
-                    ])
+                'userId' => 2,
+                'start' => '2026-08-11',
+                'end' => '2026-08-11',
+            ])
         );
 
         $this->assertEquals(200, $response->getStatusCode());
@@ -196,9 +196,9 @@ class ListCheckinHistoryTest extends TestCase
             $this->request('GET', '/api/checkin/history', [
                 'authenticatedAs' => 2,
             ])->withQueryParams([
-                        'userId' => 2,
-                        'include' => 'user',
-                    ])
+                'userId' => 2,
+                'include' => 'user',
+            ])
         );
 
         $this->assertEquals(200, $response->getStatusCode());

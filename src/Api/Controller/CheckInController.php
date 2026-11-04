@@ -5,9 +5,9 @@ namespace Primexcalibur\CheckinWithHistory\Api\Controller;
 use Flarum\Api\Controller\AbstractShowController;
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Http\RequestUtil;
+use Primexcalibur\CheckinWithHistory\Service\CheckInService;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
-use Primexcalibur\CheckinWithHistory\Service\CheckInService;
 
 class CheckInController extends AbstractShowController
 {

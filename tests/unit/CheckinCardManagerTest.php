@@ -6,7 +6,6 @@ use Flarum\Extension\ExtensionManager;
 use Flarum\Testing\unit\TestCase;
 use Flarum\User\User;
 use Illuminate\Database\ConnectionInterface;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use Mockery as m;
 use Primexcalibur\CheckinWithHistory\Support\CheckinCardManager;

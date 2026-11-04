@@ -5,9 +5,9 @@ namespace Primexcalibur\CheckinWithHistory\Tests\unit;
 use Carbon\Carbon;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\Testing\unit\TestCase;
+use Mockery as m;
 use Primexcalibur\CheckinWithHistory\Api\Serializer\CheckinHistorySerializer;
 use Primexcalibur\CheckinWithHistory\Model\CheckinRecord;
-use Mockery as m;
 
 class CheckinHistorySerializerTest extends TestCase
 {

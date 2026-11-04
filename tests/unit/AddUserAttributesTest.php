@@ -17,6 +17,7 @@ class AddUserAttributesTest extends TestCase
         m::close();
         parent::tearDown();
     }
+
     /**
      * @test
      */
