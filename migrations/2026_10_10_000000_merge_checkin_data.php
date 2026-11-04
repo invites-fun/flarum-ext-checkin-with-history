@@ -40,19 +40,41 @@ return [
         // Migrate legacy history rows if present
         if ($schema->hasTable('user_checkin_history')) {
             $connection->table('user_checkin_history')
+                ->whereIn('user_id', function ($query) {
+                    $query->select('id')->from('users');
+                })
                 ->orderBy('id')
-                ->chunkById(500, function ($rows) use ($connection) {
+                ->chunkById(1000, function ($rows) use ($connection) {
+                    $inserts = [];
+                    $seen = [];
                     foreach ($rows as $row) {
-                        $date = $row->last_checkin_date ?? substr($row->last_checkin_time, 0, 10);
-                        if (! $connection->table('checkin_records')->where('user_id', $row->user_id)->where('checkin_date', $date)->exists()) {
-                            $connection->table('checkin_records')->insert([
-                                'user_id' => $row->user_id,
-                                'type' => $row->type ?? 0,
-                                'checkin_date' => $date,
-                                'streak' => $row->total_continuous_checkin_count ?? 1,
-                                'checked_in_at' => $row->last_checkin_time ?? $date.' 00:00:00',
-                            ]);
+                        $date = (! empty($row->last_checkin_date) && $row->last_checkin_date !== '0000-00-00')
+                            ? (string) $row->last_checkin_date
+                            : (! empty($row->last_checkin_time) && $row->last_checkin_time !== '0000-00-00 00:00:00' ? substr((string) $row->last_checkin_time, 0, 10) : null);
+
+                        if (! $date || $date === '0000-00-00' || strlen($date) < 10) {
+                            continue;
                         }
+
+                        $key = $row->user_id.'_'.$date;
+                        if (isset($seen[$key])) {
+                            continue;
+                        }
+                        $seen[$key] = true;
+
+                        $inserts[] = [
+                            'user_id' => $row->user_id,
+                            'type' => $row->type ?? 0,
+                            'checkin_date' => $date,
+                            'streak' => $row->total_continuous_checkin_count ?? 1,
+                            'checked_in_at' => (! empty($row->last_checkin_time) && $row->last_checkin_time !== '0000-00-00 00:00:00')
+                                ? (string) $row->last_checkin_time
+                                : $date.' 00:00:00',
+                        ];
+                    }
+
+                    if (! empty($inserts)) {
+                        $connection->table('checkin_records')->insertOrIgnore($inserts);
                     }
                 });
             $schema->dropIfExists('user_checkin_history');
@@ -60,19 +82,25 @@ return [
 
         // Only the last recorded day is known when upgrading without the history extension.
         $connection->table('users')->whereNotNull('last_checkin_time')->where('total_checkin_count', '>', 0)
-            ->select(['id', 'last_checkin_time', 'total_checkin_count', 'total_continuous_checkin_count'])
-            ->orderBy('id')->chunkById(500, function ($users) use ($connection) {
+            ->select(['id', 'last_checkin_time', 'total_continuous_checkin_count'])
+            ->orderBy('id')
+            ->chunkById(1000, function ($users) use ($connection) {
+                $inserts = [];
                 foreach ($users as $user) {
-                    $date = substr($user->last_checkin_time, 0, 10);
-                    if (! $connection->table('checkin_records')->where('user_id', $user->id)->where('checkin_date', $date)->exists()) {
-                        $connection->table('checkin_records')->insert([
-                            'user_id' => $user->id,
-                            'type' => 0,
-                            'checkin_date' => $date,
-                            'streak' => $user->total_continuous_checkin_count ?? 1,
-                            'checked_in_at' => $user->last_checkin_time,
-                        ]);
+                    $date = substr((string) $user->last_checkin_time, 0, 10);
+                    if (! $date || $date === '0000-00-00' || strlen($date) < 10) {
+                        continue;
                     }
+                    $inserts[] = [
+                        'user_id' => $user->id,
+                        'type' => 0,
+                        'checkin_date' => $date,
+                        'streak' => $user->total_continuous_checkin_count ?? 1,
+                        'checked_in_at' => $user->last_checkin_time,
+                    ];
+                }
+                if (! empty($inserts)) {
+                    $connection->table('checkin_records')->insertOrIgnore($inserts);
                 }
             });
 
@@ -84,8 +112,8 @@ return [
                     ->select(['id', 'checkin_card'])
                     ->orderBy('id')
                     ->chunkById(500, function ($users) use ($connection, $now) {
+                        $inserts = [];
                         foreach ($users as $user) {
-                            $inserts = [];
                             for ($i = 0; $i < (int) $user->checkin_card; $i++) {
                                 $inserts[] = [
                                     'user_id' => $user->id,
@@ -97,9 +125,9 @@ return [
                                     'updated_at' => $now,
                                 ];
                             }
-                            if (! empty($inserts)) {
-                                $connection->table('store_cart')->insert($inserts);
-                            }
+                        }
+                        if (! empty($inserts)) {
+                            $connection->table('store_cart')->insert($inserts);
                         }
                     });
             }
